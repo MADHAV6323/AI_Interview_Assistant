@@ -1,3 +1,2 @@
-
-sreamlit
+streamlit
 groq
