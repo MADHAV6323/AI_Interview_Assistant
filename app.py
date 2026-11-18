@@ -21,4 +21,4 @@ elif mode == 'generate code questions':
   count = st.slider("Number od question",1,10,5)
 else:
   question = st.text_area('Enter interview question here ')
-  answer = st.text_area('enter your answer ', height = 160
+  answer = st.text_area('enter your answer ', height = 160)
