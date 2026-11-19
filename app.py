@@ -23,18 +23,25 @@ else:
   question = st.text_area('Enter interview question here ')
   answer = st.text_area('enter your answer ', height = 160)
   if st.button("Generate AI Response",type = 'primary'):
-    if mode in ['evaluate answer','improve answers'] and (not question.strip())
+  if mode in ['evaluate answer','improve answers'] and (not question.strip())
                st.wrning("plase enter a valid Question and Answer")
                st.stop()
     topics = "topice is" + topic + "difficult is" +level
     if mode ="generate qustions":
       task = 'generate" + str(count) + " frquently asked interview questions, 3 theory and 2 senario questiona.do not give answers.give hints"
     elif mode == "generate code questions":
-    task = "generate" + str(count) + " Frequenrtly askedcodeing question on "
+    task = "generate" + str(count) + " Frequenrtly askedcodeing question on " + topic + "anything can be related to topic"
   elif mode == "evaluate answer":
     task = "question :" + question + " MY Answer : " + answer + "Evalute this answer based on concept, relevence , communication, length of answe. give each rating out of 5 in a list. "
    elif mode == "improve answers":
      task = "question :" + question + " MY Answer : " + answer + "imporve the answern based oon choice on words key words to include "
-        
-    
-    
+     background ="job role:"+ role +"difficulty level" + level
+     with st.spinner("genrate your answer......"):
+       try:
+         response = client.completions.reate(
+           modle =gen_modle,
+           massages = [{"role":"system","content":"act as senior interviewer,and both HR and techonical expert"},
+                       {"roles" : "user",
+                        "content" : background + task}],
+           temperature = 0.7,
+           max_token = 2000    
